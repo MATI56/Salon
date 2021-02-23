@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SalonV2.Models.Uslugi>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+@DateTime.Now
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Klienci.Imie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Klienci.Nazwisko)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Klienci.NumerTel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataRozpo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataZak)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @if (@DateTime.Now > item.DataRozpo.AddYears(1) & item.Nazwa == "Brwi")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Klienci.Imie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Klienci.Nazwisko)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Klienci.NumerTel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataRozpo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataZak)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

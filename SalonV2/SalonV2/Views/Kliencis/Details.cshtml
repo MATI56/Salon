@@ -1,0 +1,42 @@
+﻿@model SalonV2.Models.Klienci
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Sczegoly</h1>
+
+<div>
+    <h4>Klienci</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumerTel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumerTel)
+        </dd>
+        <dd class="col-sm-12">
+            <form asp-controller="Uslugis" asp-action="Index" method="post">
+                <input type="hidden" value="@Model.KlienciId" name="intid" readonly>
+                <input type="submit" value="Uslugi" />
+            </form>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.KlienciId">Edytuj</a> |
+    <a asp-action="Index">Wroc do listy</a>
+</div>

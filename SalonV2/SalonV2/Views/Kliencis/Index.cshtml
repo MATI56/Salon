@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SalonV2.Models.Klienci>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Dodaj klienta</a>
+</p>
+@using (Html.BeginForm("Index", "Kliencis", FormMethod.Post))
+{
+    <div>
+        Wyszukaj po nazwisku @Html.TextBox("searchString")
+        <input id="Submit1" type="submit" value="Filter" />
+    </div>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Imie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwisko)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumerTel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwisko)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumerTel)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.KlienciId">Edytuj</a> |
+                    <a asp-action="Details" asp-route-id="@item.KlienciId">Sczegoly</a> |
+                    <a asp-action="Delete" asp-route-id="@item.KlienciId">Usun</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
